@@ -4,6 +4,10 @@
 #include <ao/ao.h>
 
 #define BITS 8
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define BLUE "\033[1;34m"
+#define RESET "\033[0m"
 
 mpg123_handle *mh = NULL;
 ao_device *dev = NULL;
@@ -16,8 +20,8 @@ void about();
 int main(int argc, char *argv[])
 {
     int op=0,surah_number=0;
-    std::cout << "\t\t\t QSTREAM | Lite Weight Quran Streaming \n" << std::endl;
-    std::cout << "\n 1. Stream A Surah " << std::endl;
+    std::cout << BLUE << "\n\n\n\t\t\t\t Qstream \n" << std::endl;
+    std::cout << GREEN << "\n 1. Stream A Surah " << std::endl;
     std::cout << " 2. About the program " << std::endl;
     std::cout << " 0. Exit " << std::endl;
     std::cout << " Enter a Option : ";
@@ -25,7 +29,7 @@ int main(int argc, char *argv[])
     switch(op)
     {
         case 1:
-        std::cout << "\n Enter the Surah Number : ";
+        std::cout << " Enter the Surah Number : ";
         std::cin >> surah_number;
             process_stream(surah_number);
             break;
@@ -33,13 +37,14 @@ int main(int argc, char *argv[])
             about();
             break;
         case 0:
-        std::cout << "\n Exiting Program " << std::endl;
+        std::cout << " Exiting Program " << std::endl;
             exit(0);
             break;
         default:
-        std::cout << "\n Invalid Option , Please restart the program " << std::endl;
+        std::cout << RED << " Invalid Option , Please restart the program " << std::endl;
             break;
     }
+    std::cout << RESET;
     system("pause");
     return 0;
 }
@@ -116,7 +121,7 @@ std::string surah_url(int num)
             throw num;
         }
     } catch (int Error) {
-        std::cout << "\n Invalid surah , please enter correct number " << std::endl;
+        std::cout << RED << " Invalid surah , please enter correct number " << std::endl;
         exit(0);
     }
     return url;
@@ -124,7 +129,7 @@ std::string surah_url(int num)
 
 void about()
 {
-    std::cout << " QSTREAM V1.0 " << std::endl;
+    std::cout << "\033[1;33m QSTREAM V1.0 " << std::endl;
     std::cout << " A Lite Weight Quran Recitation Streaming Program " << std::endl;
     std::cout << " Developed by Nashid " << std::endl;
 }
