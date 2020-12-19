@@ -121,7 +121,7 @@ void process_stream(int num, std::string surah_info_url)
     json stream_info = json::parse(info_buffer);
     std::cout << " Stream Info :- " << std::endl;
     std::cout << " Surah Name : " << stream_info["data"]["englishName"] << std::endl;
-    std::cout << " Surah Number : " << stream_info["data"]["number"];
+    std::cout << " Surah Number : " << stream_info["data"]["number"] << std::endl;
     std::cout << " Number of Ayahs : " << stream_info["data"]["numberOfAyahs"] << std::endl;
     std::cout << " Reciter : " << stream_info["data"]["edition"]["englishName"] << std::endl;
     ao_initialize();
@@ -158,8 +158,8 @@ void list_surah()
             std::cout << " List of Surahs :- " << std::endl;
             for(int i=0;i<114;i++)
             {
-                std::cout << " Surah Number : " << metadata["data"]["surahs"]["references"][i]["number"] << std::endl;
-                std::cout << " Surah Name : " << metadata["data"]["surahs"]["references"][i]["englishName"] << std::endl;
+                std::cout << GREEN << " Surah Name : " << metadata["data"]["surahs"]["references"][i]["englishName"] << std::endl;
+                std::cout << " Surah Number : " << RED << metadata["data"]["surahs"]["references"][i]["number"] << std::endl;
             }
         }
         else
@@ -199,4 +199,3 @@ void about()
     std::cout << " A Lite Weight Quran Recitation Streaming Program " << std::endl;
     std::cout << " Developed by Nashid " << std::endl;
 }
-
